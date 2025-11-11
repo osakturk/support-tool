@@ -7,9 +7,14 @@ import { Component, input, ViewEncapsulation } from '@angular/core';
   styleUrl: './control.css',
   encapsulation: ViewEncapsulation.None,
   host: {
-    class: 'control'
+    class: 'control',
+    '(click)': 'onClick()'
   }
 })
 export class Control {
   label = input.required<string>()
+
+  onClick(){
+    console.log('Clicked!')
+  }
 }
