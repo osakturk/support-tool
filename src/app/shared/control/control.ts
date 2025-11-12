@@ -1,4 +1,4 @@
-import { Component, ElementRef, input, ViewEncapsulation } from '@angular/core';
+import { Component, ContentChild, contentChild, ElementRef, input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -8,16 +8,18 @@ import { Component, ElementRef, input, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
   host: {
     class: 'control',
-    '(click)': 'onClick()'
-  }
+    '(click)': 'onClick()',
+  },
 })
 export class Control {
-  label = input.required<string>()
+  label = input.required<string>();
+  private control = contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input')
 
   constructor(private hostElement: ElementRef) {}
 
-  onClick(){
-    console.log('Clicked!')
-    console.log(this.hostElement)
+  onClick() {
+    console.log('Clicked!');
+    console.log(this.hostElement);
+    console.log(this.control()?.nativeElement)
   }
 }
