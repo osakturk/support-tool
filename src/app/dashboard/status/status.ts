@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-status',
@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './status.html',
   styleUrl: './status.css',
 })
-export class Status {
+export class Status implements OnInit {
   currentStatus: 'online' | 'offline' | 'unknown' = 'online';
 
   constructor() {}
